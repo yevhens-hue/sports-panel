@@ -1,0 +1,72 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password      String
+  name          String?
+  firstName     String?
+  lastName      String?
+  patronymic    String?
+  phone         String?
+  city          String?
+  birthDate     String?
+  gender        String?
+  height        Int?
+  weight        Int?
+  newEmail      String?
+  lastMedical   String?
+  role          String   @default("ATHLETE")
+  points        Int      @default(0)
+  rank          String?
+  avatar        String?
+  teamPhoto     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  pointTransactions PointTransaction[]
+  parentRelations   ParentRelation[]   @relation("AthleteParents")
+  coachRelations    CoachRelation[]    @relation("AthleteCoach")
+  myParentOf        ParentRelation[]   @relation("ParentUser")
+  myCoachOf         CoachRelation[]    @relation("CoachUser")
+}
+
+model PointTransaction {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  type        String   // "TRAINING", "COMPETITION", "BONUS", "DEDUCTION"
+  description String
+  amount      Int
+  date        String
+  source      String   @default("Начислено тренером")
+  createdAt   DateTime @default(now())
+}
+
+model ParentRelation {
+  id         String  @id @default(cuid())
+  athleteId  String
+  parentId   String
+  relation   String  // "MOTHER", "FATHER"
+  athlete    User    @relation("AthleteParents", fields: [athleteId], references: [id])
+  parent     User    @relation("ParentUser", fields: [parentId], references: [id])
+}
+
+model CoachRelation {
+  id        String @id @default(cuid())
+  athleteId String
+  coachId   String
+  athlete   User   @relation("AthleteCoach", fields: [athleteId], references: [id])
+  coach     User   @relation("CoachUser", fields: [coachId], references: [id])
+}
