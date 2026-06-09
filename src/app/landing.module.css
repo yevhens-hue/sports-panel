@@ -2,6 +2,7 @@
 .page {
   min-height: 100vh;
   font-family: 'Roboto', system-ui, sans-serif;
+  scroll-behavior: smooth;
 }
 
 /* ─── Navbar ─── */
@@ -383,6 +384,7 @@
 .featuresSection {
   background: var(--bg-color);
   padding: 100px 0;
+  scroll-margin-top: 80px;
 }
 
 .featuresGrid {
@@ -443,6 +445,7 @@
 .audienceSection {
   padding: 100px 0;
   background: white;
+  scroll-margin-top: 80px;
 }
 
 .audienceDark {
