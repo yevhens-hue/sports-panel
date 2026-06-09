@@ -1,11 +1,14 @@
 'use client';
 import { signIn } from 'next-auth/react';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const registered = searchParams.get('registered');
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
@@ -46,6 +49,13 @@ export default function LoginPage() {
               <p>Введите ваши учетные данные для доступа к платформе. Если у вас еще нет аккаунта — вы можете зарегистрироваться.</p>
             </div>
           </div>
+
+          {registered && (
+            <div style={{ padding: '12px', background: 'rgba(40, 167, 69, 0.1)', color: '#28a745', borderRadius: '8px', marginBottom: '15px', border: '1px solid rgba(40, 167, 69, 0.2)', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <i className="bi bi-check-circle-fill"></i>
+              Регистрация прошла успешно! Теперь вы можете войти.
+            </div>
+          )}
 
           {error && <div className="error-box">{error}</div>}
 
@@ -113,5 +123,13 @@ export default function LoginPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
