@@ -3,235 +3,226 @@ import styles from './landing.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.landingPage}>
+    <div className={styles.page}>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-      
-      {/* ─── Hero Section ─── */}
+
+      {/* ─── Navbar ─── */}
+      <nav className={styles.navbar}>
+        <div className={styles.navInner}>
+          <div className={styles.navLogo}>
+            <i className="bi bi-water"></i>
+            <span>Sports Panel</span>
+          </div>
+          <div className={styles.navLinks}>
+            <a href="#features">Можливості</a>
+            <a href="#coaches">Тренерам</a>
+            <a href="#athletes">Спортсменам</a>
+          </div>
+          <div className={styles.navActions}>
+            <Link href="/login" className={styles.navLogin}>Увійти</Link>
+            <Link href="/register" className={styles.navRegister}>Реєстрація</Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* ─── Hero ─── */}
       <section className={styles.hero}>
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          className={styles.heroVideo}
-          poster="https://images.pexels.com/videos/8533110/pexels-photo-8533110.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
-        >
-          <source src="https://videos.pexels.com/video-files/8533110/8533110-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-        </video>
-        
+        <img
+          src="https://images.pexels.com/photos/8688160/pexels-photo-8688160.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          alt="Swimmers racing underwater"
+          className={styles.heroBg}
+        />
+        <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <div className={styles.heroText}>
-            <span className={styles.heroSubtitle}>Professional Performance</span>
-            <h1 className={styles.heroTitle}>Elevate Your <span>Game</span></h1>
-            <p className={styles.heroDescription}>
-              The modern ecosystem for athletes, coaches, and parents to track progress and achieve excellence through data-driven insights.
-            </p>
-            <div className={styles.heroActions}>
-              <Link href="/login" className="btn btn-primary">
-                Start Free Trial
+          <span className={styles.heroTag}>УПРАВЛІННЯ ПЛАВАЛЬНИМ КЛУБОМ</span>
+          <h1 className={styles.heroTitle}>
+            Сучасна платформа<br />
+            <span className={styles.heroAccent}>для вашого клубу</span>
+          </h1>
+          <p className={styles.heroDesc}>
+            Управляйте спортсменами, призначайте тренерів, нараховуйте бали та відстежуйте розряди — все в одному місці.
+          </p>
+          <div className={styles.heroButtons}>
+            <Link href="/register" className={styles.btnPrimary}>
+              Розпочати безкоштовно <i className="bi bi-arrow-right"></i>
+            </Link>
+            <Link href="/login" className={styles.btnOutline}>
+              Увійти до панелі
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Stats Strip ─── */}
+      <div className={styles.statsStrip}>
+        <div className={styles.statItem}>
+          <i className="bi bi-person-badge"></i>
+          <div>
+            <strong>3 ролі</strong>
+            <span>Адмін · Тренер · Спортсмен</span>
+          </div>
+        </div>
+        <div className={styles.statDivider} />
+        <div className={styles.statItem}>
+          <i className="bi bi-coin"></i>
+          <div>
+            <strong>Система балів</strong>
+            <span>Мотивація через досягнення</span>
+          </div>
+        </div>
+        <div className={styles.statDivider} />
+        <div className={styles.statItem}>
+          <i className="bi bi-award"></i>
+          <div>
+            <strong>Розряди та рейтинги</strong>
+            <span>Від юніора до майстра</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── Features ─── */}
+      <section id="features" className={styles.featuresSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTag}>МОЖЛИВОСТІ ПЛАТФОРМИ</span>
+            <h2 className={styles.sectionTitle}>Все що потрібно клубу</h2>
+            <p className={styles.sectionDesc}>Комплексне рішення для управління плавальним клубом будь-якого масштабу</p>
+          </div>
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <i className="bi bi-people-fill"></i>
+              </div>
+              <h3>Реєстр спортсменів</h3>
+              <p>Повний список усіх атлетів з їхніми даними, містом, баловою системою та поточним розрядом.</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <i className="bi bi-coin"></i>
+              </div>
+              <h3>Нарахування балів</h3>
+              <p>Тренери нараховують бали за тренування та досягнення. Спортсмени бачать свій прогрес в реальному часі.</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <i className="bi bi-award-fill"></i>
+              </div>
+              <h3>Розряди та рейтинг</h3>
+              <p>Система спортивних розрядів від початківця до дорослого. Автоматичне оновлення рейтингу.</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <i className="bi bi-person-check-fill"></i>
+              </div>
+              <h3>Управління тренерами</h3>
+              <p>Контролюйте склад тренерського штабу, розподіляйте спортсменів між тренерами.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── For Coaches ─── */}
+      <section id="coaches" className={styles.audienceSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.audienceRow}>
+            <div className={styles.audienceImage}>
+              <img
+                src="https://images.pexels.com/photos/8028683/pexels-photo-8028683.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Coaches and swimmers at pool edge"
+              />
+            </div>
+            <div className={styles.audienceContent}>
+              <span className={styles.sectionTag}>ДЛЯ ТРЕНЕРІВ</span>
+              <h2 className={styles.audienceTitle}>Управляйте командою ефективно</h2>
+              <p className={styles.audienceDesc}>
+                Тренери отримують повний інструментарій для роботи зі своїми спортсменами — від обліку відвідувань до нарахування балів.
+              </p>
+              <ul className={styles.featureList}>
+                <li><i className="bi bi-check-circle-fill"></i> Перегляд списку своїх спортсменів</li>
+                <li><i className="bi bi-check-circle-fill"></i> Нарахування балів за тренування</li>
+                <li><i className="bi bi-check-circle-fill"></i> Відстеження прогресу атлетів</li>
+                <li><i className="bi bi-check-circle-fill"></i> Зручний пошук по імені та місту</li>
+              </ul>
+              <Link href="/register" className={styles.btnPrimary}>
+                Почати як тренер <i className="bi bi-arrow-right"></i>
               </Link>
-              <a href="#" className="btn btn-outline" style={{ border: '1px solid white', color: 'white' }}>
-                Watch Demo
-              </a>
-            </div>
-          </div>
-          <div className={styles.heroVisual}>
-            <img 
-              src="https://images.pexels.com/photos/5607008/pexels-photo-5607008.jpeg" 
-              alt="Dashboard Mockup" 
-              className={styles.heroMockup} 
-            />
-          </div>
-        </div>
-        <div className={styles.overturn} />
-      </section>
-
-      {/* ─── Features Grid ─── */}
-      <section className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <span className={styles.sectionTag}>Platform Capabilities</span>
-          <h2 className={styles.sectionTitle}>Meliorate Your Performance</h2>
-        </div>
-        <div className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>
-              <i className="bi bi-graph-up"></i>
-            </div>
-            <h3>Advanced Analytics</h3>
-            <p>Real-time tracking of performance metrics with detailed growth charts and predictive modeling.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>
-              <i className="bi bi-chat-dots"></i>
-            </div>
-            <h3>Team Sync</h3>
-            <p>Seamless communication channels between coaches, athletes, and support staff.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>
-              <i className="bi bi-calendar-check"></i>
-            </div>
-            <h3>Smart Scheduling</h3>
-            <p>Interactive training calendars with automated reminders and availability management.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>
-              <i className="bi bi-shield-lock"></i>
-            </div>
-            <h3>Parental Oversight</h3>
-            <p>Secure monitoring for parents to stay updated on their child's athletic journey and safety.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Audience Sections ─── */}
-      <section className={`${styles.section} ${styles.audience}`}>
-        {/* Row 1: Athletes */}
-        <div className={`${styles.audienceRow} ${styles.athleteRow}`}>
-          <div className={styles.audienceImageContainer}>
-            <img 
-              src="https://images.unsplash.com/photo-1623503071332-fffb3b632cda?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTAwNDR8MHwxfHNlYXJjaHwxfHxjb25maWRlbnQlMjBhdGhsZXRlJTIwaG9sZGluZyUyMGElMjBiYXNrZXRiYWxsfGVufDB8fHx8MTc4MTAzNzYyNHww&ixlib=rb-4.1.0&q=85" 
-              alt="Athlete" 
-              className={styles.audienceImage} 
-            />
-          </div>
-          <div className={styles.audienceContent}>
-            <h3>Built for Performance</h3>
-            <p>Athletes get a centralized hub to track every metric, from sprint speeds to recovery times, with automated highlight generation.</p>
-            <div className={styles.audienceList}>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> Personal highlight reels</div>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> AI-powered progress insights</div>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> Recruitment profile builder</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Row 2: Coaches */}
-        <div className={`${styles.audienceRow} ${styles.coachRow}`}>
-          <div className={styles.audienceContent}>
-            <h3>Strategic Leadership</h3>
-            <p>Coaches can manage entire rosters, design tactical plans, and award performance points to motivate continuous improvement.</p>
-            <div className={styles.audienceList}>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> Roster management</div>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> Point-based reward system</div>
-              <div className={styles.audienceListItem}><i className="bi bi-check-circle-fill"></i> Tactical board & planning</div>
-            </div>
-          </div>
-          <div className={styles.audienceImageContainer}>
-            <img 
-              src="https://images.pexels.com/photos/6767013/pexels-photo-6767013.jpeg" 
-              alt="Coach" 
-              className={styles.audienceImage} 
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Testimonials ─── */}
-      <section className={`${styles.section} ${styles.testimonials}`}>
-        <div className={styles.sectionHeader}>
-          <span className={styles.sectionTag}>Passionate Voices</span>
-          <h2 className={styles.sectionTitle}>Trusted by Champions</h2>
-        </div>
-        <div className={styles.testimonialGrid}>
-          <div className={styles.testimonialCard}>
-            <i className={`bi bi-quote ${styles.quoteIcon}`}></i>
-            <div className={styles.stars}>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-            </div>
-            <p className={styles.testimonialText}>
-              "Sports Panel has completely changed how I track my training. The insights are incredibly accurate and keep me motivated every single day."
-            </p>
-            <div className={styles.testimonialUser}>
-              <div className="profile-avatar">AM</div>
-              <div>
-                <strong>Alex Morgan</strong>
-                <span className="badge badge-primary" style={{ marginLeft: '10px' }}>ATHLETE</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.testimonialCard}>
-            <i className={`bi bi-quote ${styles.quoteIcon}`}></i>
-            <div className={styles.stars}>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-              <i className="bi bi-star-fill"></i>
-            </div>
-            <p className={styles.testimonialText}>
-              "Managing a team of 30 athletes used to be a logistical nightmare. Now, everything from scheduling to performance reviews is in one place."
-            </p>
-            <div className={styles.testimonialUser}>
-              <div className="profile-avatar" style={{ backgroundColor: 'var(--accent-color)' }}>RK</div>
-              <div>
-                <strong>Ryan Klopp</strong>
-                <span className="badge badge-primary" style={{ marginLeft: '10px' }}>COACH</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA Section ─── */}
+      {/* ─── For Athletes ─── */}
+      <section id="athletes" className={`${styles.audienceSection} ${styles.audienceDark}`}>
+        <div className={styles.sectionInner}>
+          <div className={`${styles.audienceRow} ${styles.audienceRowReverse}`}>
+            <div className={styles.audienceContent}>
+              <span className={styles.sectionTagLight}>ДЛЯ СПОРТСМЕНІВ</span>
+              <h2 className={`${styles.audienceTitle} ${styles.audienceTitleLight}`}>Стежте за своїм прогресом</h2>
+              <p className={`${styles.audienceDesc} ${styles.audienceDescLight}`}>
+                Спортсмени мають власний кабінет для відстеження балів, перегляду свого розряду та активності тренувань.
+              </p>
+              <ul className={`${styles.featureList} ${styles.featureListLight}`}>
+                <li><i className="bi bi-check-circle-fill"></i> Власна балова таблиця</li>
+                <li><i className="bi bi-check-circle-fill"></i> Поточний спортивний розряд</li>
+                <li><i className="bi bi-check-circle-fill"></i> Історія всіх нарахувань</li>
+                <li><i className="bi bi-check-circle-fill"></i> Профіль з унікальним ID</li>
+              </ul>
+              <Link href="/register" className={styles.btnAccent}>
+                Зареєструватись <i className="bi bi-arrow-right"></i>
+              </Link>
+            </div>
+            <div className={styles.audienceImage}>
+              <img
+                src="https://images.pexels.com/photos/9030298/pexels-photo-9030298.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Swimmer underwater"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA ─── */}
       <section className={styles.ctaSection}>
-        <h2 className={styles.ctaTitle}>Ready to Transform Your Season?</h2>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-          <Link href="/login" className="btn btn-primary" style={{ background: 'var(--heading-color)', padding: '15px 40px' }}>
-            Get Started Now
-          </Link>
-          <a href="#" className="btn btn-outline" style={{ border: '2px solid var(--heading-color)', color: 'var(--heading-color)', padding: '15px 40px' }}>
-            Contact Sales
-          </a>
+        <div className={styles.ctaContent}>
+          <h2 className={styles.ctaTitle}>Готові розпочати?</h2>
+          <p className={styles.ctaDesc}>Приєднуйтесь до платформи та спростіть управління вашим клубом вже сьогодні.</p>
+          <div className={styles.ctaButtons}>
+            <Link href="/register" className={styles.btnDark}>
+              Зареєструватись безкоштовно <i className="bi bi-arrow-right"></i>
+            </Link>
+            <Link href="/login" className={styles.btnDarkOutline}>
+              Увійти
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ─── Footer ─── */}
       <footer className={styles.footer}>
-        <div className={styles.footerGrid}>
-          <div className={styles.footerLogo}>
-            <h2>Sports Panel</h2>
-            <p>The definitive platform for athletic management and performance optimization.</p>
-            <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialIcon}><i className="bi bi-twitter-x"></i></a>
-              <a href="#" className={styles.socialIcon}><i className="bi bi-instagram"></i></a>
-              <a href="#" className={styles.socialIcon}><i className="bi bi-youtube"></i></a>
+        <div className={styles.footerInner}>
+          <div className={styles.footerBrand}>
+            <div className={styles.footerLogo}>
+              <i className="bi bi-water"></i>
+              <span>Sports Panel</span>
             </div>
+            <p>Платформа управління плавальним клубом для тренерів, спортсменів та адміністраторів.</p>
           </div>
-          <div className={styles.footerCol}>
-            <h4>Product</h4>
-            <div className={styles.footerLinks}>
-              <a href="#">Analytics</a>
-              <a href="#">Scheduling</a>
-              <a href="#">Team Hub</a>
-              <a href="#">Security</a>
+          <div className={styles.footerLinks}>
+            <div className={styles.footerCol}>
+              <h4>Платформа</h4>
+              <a href="#features">Можливості</a>
+              <a href="#coaches">Для тренерів</a>
+              <a href="#athletes">Для спортсменів</a>
             </div>
-          </div>
-          <div className={styles.footerCol}>
-            <h4>Company</h4>
-            <div className={styles.footerLinks}>
-              <a href="#">About Us</a>
-              <a href="#">Careers</a>
-              <a href="#">Partners</a>
-              <a href="#">Contact</a>
-            </div>
-          </div>
-          <div className={styles.footerCol}>
-            <h4>Support</h4>
-            <div className={styles.footerLinks}>
-              <a href="#">Help Center</a>
-              <a href="#">Guides</a>
-              <a href="#">API Docs</a>
-              <a href="#">Privacy Policy</a>
+            <div className={styles.footerCol}>
+              <h4>Акаунт</h4>
+              <Link href="/login">Увійти</Link>
+              <Link href="/register">Реєстрація</Link>
             </div>
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <p>© 2026 Sports Management Panel. All rights reserved.</p>
+          <p>© 2026 Sports Panel. Всі права захищені.</p>
         </div>
       </footer>
     </div>
